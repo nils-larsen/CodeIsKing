@@ -1,0 +1,29 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIK.Weather.API", "CIK.Weather.API\CIK.Weather.API.csproj", "{17CA7793-0638-4A19-9143-43EDA43A4C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIK.Weather.Models", "CIK.Weather.Models\CIK.Weather.Models.csproj", "{DBFFA15F-BF61-4BDE-9293-C572550E1030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIK.Weather.Tests", "CIK.Weather.Tests\CIK.Weather.Tests.csproj", "{EFB782D6-EB8C-4FC3-9B7E-A32CAB8E0982}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17CA7793-0638-4A19-9143-43EDA43A4C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17CA7793-0638-4A19-9143-43EDA43A4C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17CA7793-0638-4A19-9143-43EDA43A4C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17CA7793-0638-4A19-9143-43EDA43A4C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFFA15F-BF61-4BDE-9293-C572550E1030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFFA15F-BF61-4BDE-9293-C572550E1030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFFA15F-BF61-4BDE-9293-C572550E1030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFFA15F-BF61-4BDE-9293-C572550E1030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB782D6-EB8C-4FC3-9B7E-A32CAB8E0982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB782D6-EB8C-4FC3-9B7E-A32CAB8E0982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB782D6-EB8C-4FC3-9B7E-A32CAB8E0982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB782D6-EB8C-4FC3-9B7E-A32CAB8E0982}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
