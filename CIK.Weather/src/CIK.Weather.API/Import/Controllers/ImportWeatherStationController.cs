@@ -21,10 +21,11 @@ namespace CIK.Weather.API.Import.Controllers
         {
             var path = _apiUrl.Value.WeatherStationsUrl;
 
-            var response = _importer.GetResponse(path);
-            _importer.SaveResponse(response);
+            var response = _importer.GetStream(path);
+            var root = _importer.DeserializeStream(response);
+            _importer.SaveObject(root);
 
-            return Ok("Import completed!");
+            return Created("Import completed!", "tjenaaaa");
         }
     }
 }

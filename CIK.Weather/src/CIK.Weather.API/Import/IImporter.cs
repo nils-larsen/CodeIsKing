@@ -1,8 +1,10 @@
-﻿namespace CIK.Weather.API.Import
+﻿using System.IO;
+namespace CIK.Weather.API.Import
 {
     public interface IImporter
     {
-        string GetResponse(string path);
-        void SaveResponse(string response);
+        Stream GetStream(string path);
+        SmhiResponseObject DeserializeStream(Stream response);
+        void SaveObject(SmhiResponseObject root);
     }
 }
