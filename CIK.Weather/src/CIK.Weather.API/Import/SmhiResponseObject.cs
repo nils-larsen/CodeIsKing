@@ -1,5 +1,4 @@
-﻿
-namespace CIK.Weather.API.Import
+﻿namespace CIK.Weather.API.Import
 {
     public class SmhiResponseObject
     {

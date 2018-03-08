@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CIK.Weather.Models;
-using System;
+﻿using CIK.Weather.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CIK.Weather.API.Controllers
 {
@@ -32,7 +31,7 @@ namespace CIK.Weather.API.Controllers
 
             if (station == null)
                 return NotFound();
-            
+
             return Ok(station);
         }
 

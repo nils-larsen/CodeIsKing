@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace CIK.Weather.API.Migrations
@@ -16,7 +17,26 @@ namespace CIK.Weather.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.0-rtm-26452");
+                .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CIK.Weather.Models.TemperatureInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<double>("Temperature");
+
+                    b.Property<string>("WeatherStationId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WeatherStationId");
+
+                    b.ToTable("Temperature");
+                });
 
             modelBuilder.Entity("CIK.Weather.Models.WeatherStation", b =>
                 {
@@ -34,6 +54,13 @@ namespace CIK.Weather.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WeatherStation");
+                });
+
+            modelBuilder.Entity("CIK.Weather.Models.TemperatureInfo", b =>
+                {
+                    b.HasOne("CIK.Weather.Models.WeatherStation", "WeatherStation")
+                        .WithMany()
+                        .HasForeignKey("WeatherStationId");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CIK.Weather.API.Data;
+using CIK.Weather.API.Import;
+using CIK.Weather.API.Repository;
+using CIK.Weather.Models;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using CIK.Weather.Models;
-using CIK.Weather.API.Data;
-using CIK.Weather.API.Import;
-using CIK.Weather.API.Settings;
-using CIK.Weather.API.Repository;
 
 namespace CIK.Weather.API
 {
@@ -23,16 +22,15 @@ namespace CIK.Weather.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<WeatherContext>(options =>
-            //options.UseSqlserver(Configuration.GetConnectionString("AzureConnection")));
-
             services.AddDbContext<WeatherContext>(options =>
-                                                  options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                                                  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
 
-            services.AddScoped<IImporter, SmhiJsonImporter>();
-            services.Configure<UrlSettings>(Configuration.GetSection("UrlSettings"));
+            var settings = new ExternalEndpoints();
+            Configuration.Bind("ExternalEndpoints", settings);
+            services.AddSingleton(settings);
 
+            services.AddScoped<IWeatherImporter, SmhiImporter>();
             services.AddScoped<IWeatherStationRepository, WeatherStationRepository>();
         }
 

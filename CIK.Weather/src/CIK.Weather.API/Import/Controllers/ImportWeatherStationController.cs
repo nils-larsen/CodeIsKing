@@ -1,29 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using CIK.Weather.API.Settings;
+﻿using CIK.Weather.API.Data;
+using CIK.Weather.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CIK.Weather.API.Import.Controllers
 {
     [Route("api/import/smhi/stations")]
     public class ImportWeatherStationController : ControllerBase
     {
-        private readonly IImporter _importer;
-        private readonly IOptions<UrlSettings> _apiUrl;
+        private readonly WeatherContext _db;
+        private readonly IWeatherImporter _stationImporter;
 
-        public ImportWeatherStationController(IImporter importer, IOptions<UrlSettings> apiUrl)
+        public ImportWeatherStationController(WeatherContext db, IWeatherImporter weatherImporter)
         {
-            _importer = importer;
-            _apiUrl = apiUrl;
+            _db = db;
+            _stationImporter = weatherImporter;
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public async Task<IActionResult> Post()
         {
-            var path = _apiUrl.Value.WeatherStationsUrl;
+            var root = await _stationImporter.ImportStations();
 
-            var response = _importer.GetStream(path);
-            var root = _importer.DeserializeStream(response);
-            _importer.SaveObject(root);
+            var weatherStations = new List<WeatherStation>();
+
+            foreach (var station in root.station)
+            {
+                var weatherStation = new WeatherStation
+                {
+                    Id = station.id.ToString(),
+                    Name = station.name,
+                    Altitude = station.height,
+                    Latitude = station.latitude,
+                    Longitude = station.longitude
+                };
+                weatherStations.Add(weatherStation);
+            }
+            //_db.RemoveRange(weatherStations);
+            //_db.SaveChanges();
+            _db.AddRange(weatherStations);
+            _db.SaveChanges();
 
             return Created("Import completed!", "tjenaaaa");
         }

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using CIK.Weather.API.Data;
 using CIK.Weather.Models;
-using CIK.Weather.API.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CIK.Weather.API.Repository
 {

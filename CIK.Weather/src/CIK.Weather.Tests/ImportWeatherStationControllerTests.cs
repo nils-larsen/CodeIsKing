@@ -1,5 +1,4 @@
-﻿using System;
-namespace CIK.Weather.Tests
+﻿namespace CIK.Weather.Tests
 {
     public class ImportWeatherStationControllerTests
     {

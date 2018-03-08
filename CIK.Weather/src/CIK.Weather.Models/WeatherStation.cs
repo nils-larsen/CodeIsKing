@@ -1,4 +1,6 @@
-﻿namespace CIK.Weather.Models
+﻿using System.Collections.Generic;
+
+namespace CIK.Weather.Models
 {
     public class WeatherStation
     {

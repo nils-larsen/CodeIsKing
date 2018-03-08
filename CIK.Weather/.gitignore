@@ -2,8 +2,8 @@
 *~
 
 # App Specific
+
 Data/
-CIK.Weather/src/CIK.Weather.API/appsettings.json
 
 # build
 [Oo]bj/
