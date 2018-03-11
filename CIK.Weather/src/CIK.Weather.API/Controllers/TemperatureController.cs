@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CIK.Weather.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CIK.Weather.API.Controllers
@@ -18,7 +14,6 @@ namespace CIK.Weather.API.Controllers
             _repository = repository;
         }
         
-
         [Route("{stationId}/temperature")]
         [HttpGet]
         public async Task<IActionResult> Get(string stationId)

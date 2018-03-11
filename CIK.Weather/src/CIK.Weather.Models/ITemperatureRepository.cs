@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Dynamic;
 using System.Threading.Tasks;
 
 namespace CIK.Weather.Models
@@ -8,6 +7,6 @@ namespace CIK.Weather.Models
     {
         Task<IEnumerable<TemperatureInfo>> GetTemperaturesByStationId(string id);
 
-        void DeleteTemperatureInfoByStationId(string id);
+        Task DeleteTemperatureInfoByStationId(string id);
     }
 }

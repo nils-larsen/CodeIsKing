@@ -21,10 +21,9 @@ namespace CIK.Weather.API.Repositories
             return await _context.Temperature.Where(x => x.WeatherStation.Id == id).ToListAsync();
         }
 
-        public void DeleteTemperatureInfoByStationId(string id)
+        public async Task DeleteTemperatureInfoByStationId(string id)
         {
-            var temperaturesOnStation = _context.Temperature.Where(x => x.WeatherStation.Id == id);
-            //var weatherStation = _context.WeatherStation.Find(id);
+            var temperaturesOnStation = await _context.Temperature.Where(x => x.WeatherStation.Id == id).ToListAsync();
             _context.Temperature.RemoveRange(temperaturesOnStation);
         }
     }
