@@ -41,7 +41,7 @@ namespace CIK.Weather.API.Import.Controllers
                                        var time = row[1];
                                        var temperature = row[2];
 
-                                       var couldParse = DateTime.TryParse(date + " " + time, out var dateTime);
+                                       DateTime.TryParse(date + " " + time, out var dateTime);
                                        var temperatureValue = double.Parse(temperature.Replace('.', ','));
 
                                        return new TemperatureInfo

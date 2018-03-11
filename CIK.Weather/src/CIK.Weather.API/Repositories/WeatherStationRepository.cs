@@ -1,14 +1,14 @@
-﻿using CIK.Weather.API.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CIK.Weather.API.Data;
 using CIK.Weather.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace CIK.Weather.API.Repository
+namespace CIK.Weather.API.Repositories
 {
     public class WeatherStationRepository : IWeatherStationRepository
     {
-        private WeatherContext _context;
+        private readonly WeatherContext _context;
 
         public WeatherStationRepository(WeatherContext context)
         {
@@ -37,7 +37,7 @@ namespace CIK.Weather.API.Repository
 
         public void DeleteWeatherStation(string id)
         {
-            WeatherStation weatherStation = _context.WeatherStation.Find(id);
+            var weatherStation = _context.WeatherStation.Find(id);
             _context.WeatherStation.Remove(weatherStation);
         }
 

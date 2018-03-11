@@ -1,7 +1,7 @@
 ﻿using CIK.Weather.API.Data;
 using CIK.Weather.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CIK.Weather.API.Import.Controllers
@@ -23,20 +23,16 @@ namespace CIK.Weather.API.Import.Controllers
         {
             var root = await _stationImporter.ImportStations();
 
-            var weatherStations = new List<WeatherStation>();
-
-            foreach (var station in root.station)
-            {
-                var weatherStation = new WeatherStation
+            var weatherStations = root.station.Select(station => new WeatherStation
                 {
                     Id = station.id.ToString(),
                     Name = station.name,
                     Altitude = station.height,
                     Latitude = station.latitude,
                     Longitude = station.longitude
-                };
-                weatherStations.Add(weatherStation);
-            }
+                })
+                .ToList();
+
             //_db.RemoveRange(weatherStations);
             //_db.SaveChanges();
             _db.AddRange(weatherStations);

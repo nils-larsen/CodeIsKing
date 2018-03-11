@@ -1,4 +1,4 @@
-﻿namespace CIK.Weather.API
+﻿namespace CIK.Weather.API.Settings
 {
     public class ExternalEndpoints
     {

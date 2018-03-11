@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
+using CIK.Weather.API.Settings;
 
 namespace CIK.Weather.API.Import
 {
@@ -23,7 +24,9 @@ namespace CIK.Weather.API.Import
 
         public async Task<string> ImportTemperatures(string stationId)
         {
-            var url = $"https://opendata-download-metobs.smhi.se/api/version/latest/parameter/1/station/{stationId}/period/corrected-archive/data.csv";
+            //var url = $"https://opendata-download-metobs.smhi.se/api/version/latest/parameter/1/station/{stationId}/period/corrected-archive/data.csv";
+
+            var url = _endpoints.HistoricalTemperatures.Replace("{stationId}", stationId);
 
             //var url = string.Format(_endpoints.HistoricalTemperatures, stationId);
 

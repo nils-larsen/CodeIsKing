@@ -1,6 +1,7 @@
 ﻿using CIK.Weather.API.Data;
 using CIK.Weather.API.Import;
-using CIK.Weather.API.Repository;
+using CIK.Weather.API.Repositories;
+using CIK.Weather.API.Settings;
 using CIK.Weather.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +33,7 @@ namespace CIK.Weather.API
 
             services.AddScoped<IWeatherImporter, SmhiImporter>();
             services.AddScoped<IWeatherStationRepository, WeatherStationRepository>();
+            services.AddScoped<ITemperatureRepository, TemperatureRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
