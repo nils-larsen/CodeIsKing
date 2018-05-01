@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CIK.Weather.Models
 {
     public interface IWeatherStationRepository
     {
-        IEnumerable<WeatherStation> GetWeatherStations();
+        Task<IEnumerable<WeatherStation>> GetWeatherStations();
 
-        WeatherStation GetWeatherStationById(string id);
+        Task<WeatherStation> GetWeatherStationById(string id);
 
         void InsertWeatherStation(WeatherStation weatherStation);
 

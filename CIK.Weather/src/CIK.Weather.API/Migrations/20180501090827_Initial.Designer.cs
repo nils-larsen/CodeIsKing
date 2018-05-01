@@ -11,7 +11,7 @@ using System;
 namespace CIK.Weather.API.Migrations
 {
     [DbContext(typeof(WeatherContext))]
-    [Migration("20180308200904_Initial")]
+    [Migration("20180501090827_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

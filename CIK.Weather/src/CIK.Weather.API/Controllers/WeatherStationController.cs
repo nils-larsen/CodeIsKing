@@ -1,4 +1,5 @@
-﻿using CIK.Weather.Models;
+﻿using System.Threading.Tasks;
+using CIK.Weather.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CIK.Weather.API.Controllers
@@ -14,9 +15,9 @@ namespace CIK.Weather.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var stations = _repository.GetWeatherStations();
+            var stations = await _repository.GetWeatherStations();
 
             if (stations == null)
                 return NotFound();
@@ -25,9 +26,9 @@ namespace CIK.Weather.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult Get(string id)
+        public async Task<IActionResult> Get(string id)
         {
-            var station = _repository.GetWeatherStationById(id);
+            var station = await _repository.GetWeatherStationById(id);
 
             if (station == null)
                 return NotFound();

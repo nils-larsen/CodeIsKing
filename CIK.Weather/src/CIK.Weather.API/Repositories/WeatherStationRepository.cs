@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using CIK.Weather.API.Data;
 using CIK.Weather.Models;
 using Microsoft.EntityFrameworkCore;
@@ -15,14 +16,14 @@ namespace CIK.Weather.API.Repositories
             _context = context;
         }
 
-        public IEnumerable<WeatherStation> GetWeatherStations()
+        public async Task<IEnumerable<WeatherStation>> GetWeatherStations()
         {
-            return _context.WeatherStation.ToList();
+            return await _context.WeatherStation.ToListAsync();
         }
 
-        public WeatherStation GetWeatherStationById(string id)
+        public async Task<WeatherStation> GetWeatherStationById(string id)
         {
-            return _context.WeatherStation.Find(id);
+            return await _context.WeatherStation.FindAsync(id);
         }
 
         public void InsertWeatherStation(WeatherStation weatherStation)
